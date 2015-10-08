@@ -1,0 +1,78 @@
+<head>
+  <title>Posts List</title>
+</head>
+
+<body>   
+</body>
+
+<template name="AppTemplate">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        {{> yield "Title"}}
+      </div>
+    </header>
+    
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        {{> yield}}
+      </div>
+    </main>
+  </div>
+</template>
+
+<template name="ListTitle">
+      <div class="mdl-layout-title">Posts List</div>
+</template>
+
+<template name="List">
+  <table class="mdl-data-table mdl-js-data-table">
+    <tbody>
+      {{#each posts}}
+        {{> post}}
+      {{/each}}
+    </tbody>
+  </table> 
+</template>
+
+<template name="post">
+  <tr>
+    <td class="mdl-data-table__cell--non-numeric" ><p id="listTitles">{{title}}</p></td>
+  </tr>
+</template>
+
+<template name="DescriptionTitle">
+  <a href="/"><i class="material-icons back">arrow_back</i></a>  
+  <!-- Title -->
+  <div class="mdl-layout-title mdl-layout-title-btn">{{titleMin}}</div>
+</template>
+
+<template name="Description">
+  <div id="descriptionBox">
+    <h2>{{title}}</h2>
+    <p>{{content}}</p>
+  </div>
+</template>
+
+<template name="AdminTitle">
+  <a href="/"><i class="material-icons back">arrow_back</i></a>
+  <div class="mdl-layout-title mdl-layout-title-btn">Posts List - Admin</div>  
+</template>
+
+<template name="Admin">
+  <form class="new-post">
+    <div class="mdl-textfield mdl-js-textfield">
+      <input class="mdl-textfield__input" type="text" name="title" required/>
+      <label class="mdl-textfield__label" for="title">Title</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield">
+      <textarea class="mdl-textfield__input" type="text" rows="10" name="content" required></textarea>
+      <label class="mdl-textfield__label" for="content">Content</label>
+    </div>
+    <br>
+    <button class="mdl-button mdl-js-button mdl-button--fab add" type="submit"><i class="material-icons">add</i></button>
+  </form>
+  <br>
+    <button class="delete mdl-button mdl-js-button mdl-button--raised" type="button">Delete all posts</button>
+</template>
